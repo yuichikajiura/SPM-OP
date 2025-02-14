@@ -1,7 +1,7 @@
 clc;
 clear;
 close all;
-% parpool
+parpool
 
 
 %% Configuration
@@ -24,6 +24,8 @@ for i = 1:length(p_targets)
     results = cell2table(cell(0, 11), 'VariableNames', {'experiment_ID', 'p_target', 'profile', 'method', 'c_n_0', 'nLi', 'R_f_n', 'k_n', 'k_p', 'D_s_n', 'D_s_p'});
     for j = 1:length(profiles)
         for k = 1:length(methods)
+            X = sprintf('Run experiment for p_target %d on  %s profile with %s', cell2mat(p_targets(i)), profiles(j), method_names(k));
+            disp(X);
             x_est = optimize_spm(cell_target, cell_known, bound, ...
                 profiles(j), methods(k), cell2mat(p_targets(i)), Nr_model, Nr_data);
             result = {l, cell2mat(p_targets(i)), profiles(j), method_names(k), ...
@@ -32,5 +34,5 @@ for i = 1:length(p_targets)
             l = l+1;
         end
     end
-    writetable(results, "result_"+strjoin(string(cell2mat(p_targets(7))), "-")+".txt")
+    writetable(results, "result_"+strjoin(string(cell2mat(p_targets(i))), "-")+".txt")
 end
