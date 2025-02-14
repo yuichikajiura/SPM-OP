@@ -1,7 +1,7 @@
 clc;
 clear;
 close all;
-parpool
+% parpool
 
 
 %% Configuration
