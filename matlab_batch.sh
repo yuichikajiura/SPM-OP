@@ -16,7 +16,7 @@
 # Reasonable partitions: debug_5min, debug_30min, normal, disc_dual_a100_students
 #
 
-#SBATCH --partition=debug_5min
+#SBATCH --partition=normal
 ##SBATCH --ntasks=1
 ##SBATCH --cpus-per-task 16
 #SBATCH --exclusive
@@ -27,7 +27,7 @@
 # The %j is translated into the job number
 #SBATCH --output=results/spm_op_%j_stdout.txt
 #SBATCH --error=results/spm_op_%j_stderr.txt
-#SBATCH --time=00:05:00
+#SBATCH --time=10:00:00
 #SBATCH --job-name=spm_op
 #SBATCH --mail-user=yuichi@ou.edu
 #SBATCH --mail-type=ALL
