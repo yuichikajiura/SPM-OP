@@ -136,9 +136,7 @@ function rmse = my_rmse(actual, predicted)
     rmse = sqrt(mean((actual - predicted).^2));
 end
 
-function stop = my_output(optimValues, state) 
-    stop = false; 
-    if state == 'iter' 
-        disp([' x = ',num2str(optimValues.bestx)]); 
-    end
+function stop = my_output(optimValues, ~)
+    stop = false;
+    disp([' x = ',num2str(optimValues.bestx)]); 
 end
