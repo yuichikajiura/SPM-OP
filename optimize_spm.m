@@ -71,10 +71,10 @@ function [x_est] = optimize_spm(cell_target, cell_known, bound, ...
     p_true = [csp_0_true; p_true];
 
     csp_lower = 0;
-    csp_upper = p.c_s_p_max;
+    csp_upper = p.c_s_p_max / csp_0_true;
     if tell_csp0
-        lb = [csp_0_true; p_lower];
-        ub = [csp_0_true; p_upper];
+        lb = [1; p_lower];
+        ub = [1; p_upper];
     else        
         lb = [csp_lower; p_lower];
         ub = [csp_upper; p_upper];
@@ -108,7 +108,6 @@ function [x_est] = optimize_spm(cell_target, cell_known, bound, ...
         options = optimoptions("particleswarm","Display","iter", ...
             'UseParallel', true, ...
             'UseVectorized', false, ...
-            'OutputFcn', @pso_outfun, ...
             "FunctionTolerance",1e-3);
         x_est = particleswarm(objFun,7,lb,ub,options);
     end
@@ -139,5 +138,3 @@ function stop = pso_outfun(optimValues, ~)
     stop = false;
     disp([' x = ',num2str(optimValues.bestx)]); 
 end
-
-function 
