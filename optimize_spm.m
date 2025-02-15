@@ -139,5 +139,3 @@ function stop = pso_outfun(optimValues, ~)
     stop = false;
     disp([' x = ',num2str(optimValues.bestx)]); 
 end
-
-function 
