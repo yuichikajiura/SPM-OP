@@ -9,7 +9,8 @@ cell_target = 2 ;% target cell to identify params. 1:fresh, 2:degraded
 cell_known = 1; % cell of known parameter. 1:fresh, 2:degraded
 bound = 1.5; %ratio to the known params of other cell for the boundary of param search range
 profiles = ["UDDSx2", "FUDS", "Charge", "Charge2"]; %option:UDDSx2, FUDS, Charge, Charge2, US06_Extended
-p_targets = {1, 2, 3, 4, 5, 6, [1, 2, 3, 4, 5, 6]}; %%1:nLi, 2:R_f_n, 3:k_n, 4:k_p, 5:D_s_n, 6:D_s_p
+tell_csp0 = true; % true if assume we know initial concentration 
+p_targets = {0, 1, 2, 3, 4, 5, 6, [1, 2, 3, 4, 5, 6]}; %%1:nLi, 2:R_f_n, 3:k_n, 4:k_p, 5:D_s_n, 6:D_s_p (0 to estimate csp0)
 Nr_model = 20;
 Nr_data = 100;
 methods = [1]; %1:GA, 2:PSO
@@ -27,7 +28,7 @@ for i = 1:length(p_targets)
             X = sprintf('Run experiment for p_target %d on  %s profile with %s', cell2mat(p_targets(i)), profiles(j), method_names(methods(k)));
             disp(X);
             x_est = optimize_spm(cell_target, cell_known, bound, ...
-                profiles(j), methods(k), cell2mat(p_targets(i)), Nr_model, Nr_data);
+                profiles(j), methods(k), cell2mat(p_targets(i)), Nr_model, Nr_data, tell_csp0);
             result = {l, cell2mat(p_targets(i)), profiles(j), method_names(k), ...
                 x_est(1), x_est(2), x_est(3), x_est(4), x_est(5), x_est(6), x_est(7)};
             results = [results; result];
