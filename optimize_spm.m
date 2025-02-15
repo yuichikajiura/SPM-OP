@@ -91,7 +91,7 @@ function [x_est] = optimize_spm(cell_target, cell_known, bound, ...
     css_n = @(x, I, t) calc_css(sys_n(x), I, t, c_n0_Nr(x));
     css_p = @(x, I, t) calc_css(sys_p(x), I, t, c_p0_Nr(x));
     v_pred = @(x, I, t) nonlinearSPMOutputVoltage_paramID(params(x),css_n(x, I, t),css_p(x, I, t),p.c_e,p.c_e,p.c_e,I);
-    objFun = @(x) rmse(v_pred(x, I, t), v_true);
+    objFun = @(x) my_rmse(v_pred(x, I, t), v_true);
     
     if method==1
         pop_size = (numel(p_targets)+1)*20;
@@ -102,12 +102,14 @@ function [x_est] = optimize_spm(cell_target, cell_known, bound, ...
             'UseParallel', true, ...
             'UseVectorized', false, ...
             'PopulationSize', pop_size, ...
+            'OutputFcn', @my_output, ...            
             'MaxGenerations', max_gen);
         x_est = ga(objFun,7,[],[],[],[],lb,ub, [], options);
     else
         options = optimoptions("particleswarm","Display","iter", ...
             'UseParallel', true, ...
             'UseVectorized', false, ...
+            'OutputFcn', @my_output, ...
             "FunctionTolerance",1e-3);
         x_est = particleswarm(objFun,7,lb,ub,options);
     end
@@ -128,4 +130,15 @@ function params = param_update(params, params_true, x)
     params.k_p = x(5) * params_true(5);
     params.D_s_n = x(6) * params_true(6);
     params.D_s_p = x(7) * params_true(7);
+end
+
+function rmse = my_rmse(actual, predicted)
+    rmse = sqrt(mean((actual - predicted).^2));
+end
+
+function stop = my_output(optimValues, state) 
+    stop = false; 
+    if state == 'iter' 
+        disp([' x = ',num2str(optimValues.bestx)]); 
+    end
 end
