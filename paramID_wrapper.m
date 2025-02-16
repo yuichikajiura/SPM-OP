@@ -13,7 +13,7 @@ tell_csp0 = false; % true if assume we know initial concentration
 p_targets = {0, 1, 2, 3, 4, 5, 6, [1, 2, 3, 4, 5, 6]}; %%1:nLi, 2:R_f_n, 3:k_n, 4:k_p, 5:D_s_n, 6:D_s_p (0 to estimate csp0)
 Nr_model = 20;
 Nr_data = 100;
-methods = [2]; %1:GA, 2:PSO
+methods = [1, 2]; %1:GA, 2:PSO
 
 %% Variables for recording purpose 
 method_names = ["GA", "PSO"];

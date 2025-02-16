@@ -27,7 +27,7 @@
 # The %j is translated into the job number
 #SBATCH --output=results/spm_op_%j_stdout.txt
 #SBATCH --error=results/spm_op_%j_stderr.txt
-#SBATCH --time=10:00:00
+#SBATCH --time=48:00:00
 #SBATCH --job-name=spm_op
 #SBATCH --mail-user=yuichi@ou.edu
 #SBATCH --mail-type=ALL
