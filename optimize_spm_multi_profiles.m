@@ -1,3 +1,7 @@
+clc;
+clear;
+close all;
+parpool
 
 %% Configuration
 cell_target = 2 ;% target cell to identify params. 1:fresh, 2:degraded
@@ -166,6 +170,7 @@ else
     x_est = particleswarm(objFun,11,lb,ub,options);
 end
 disp(x_est);
+save("results/x_est.csv", "x_est")
 
 % Function used in optimization algorithm 
 function css = calc_css(sys, I, t, c_0)
