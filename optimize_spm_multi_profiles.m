@@ -66,7 +66,7 @@ noise = 0.03;  % the magnitude of white noise to standard deviation of data
 std_current = 38;  % standard deviation of current data in Ampere
 std_voltage = 0.16;  % standard deviation of voltage data in Volt
 
-%%% data setup
+%%% data setup (1st profile)
 data = readtable("data/SPM_FDM_nr"+Nr_data+"_simulation_"+profiles(1)+"_cell"+cell_target+".csv");
 data.Properties.VariableNames = {'t', 'I', 'V_spm', 'css_n', ...
     'cs_ave_n', 'css_p', 'cs_ave_p'};
@@ -77,6 +77,7 @@ v1_true = v_true + normrnd(0, std_voltage * noise, size(v_true));
 t1 = data.t;
 csp0_1_true = data.cs_ave_p(1);
 
+%%% data setup (2nd profile)
 data = readtable("data/SPM_FDM_nr"+Nr_data+"_simulation_"+profiles(2)+"_cell"+cell_target+".csv");
 data.Properties.VariableNames = {'t', 'I', 'V_spm', 'css_n', ...
     'cs_ave_n', 'css_p', 'cs_ave_p'};
@@ -87,6 +88,7 @@ v2_true = v_true + normrnd(0, std_voltage * noise, size(v_true));
 t2 = data.t;
 csp0_2_true = data.cs_ave_p(1);
 
+%%% data setup (3rd profile)
 data = readtable("data/SPM_FDM_nr"+Nr_data+"_simulation_"+profiles(3)+"_cell"+cell_target+".csv");
 data.Properties.VariableNames = {'t', 'I', 'V_spm', 'css_n', ...
     'cs_ave_n', 'css_p', 'cs_ave_p'};
@@ -97,6 +99,7 @@ v3_true = v_true + normrnd(0, std_voltage * noise, size(v_true));
 t3 = data.t;
 csp0_3_true = data.cs_ave_p(1);
 
+%%% data setup (4th profile)
 data = readtable("data/SPM_FDM_nr"+Nr_data+"_simulation_"+profiles(4)+"_cell"+cell_target+".csv");
 data.Properties.VariableNames = {'t', 'I', 'V_spm', 'css_n', ...
     'cs_ave_n', 'css_p', 'cs_ave_p'};
@@ -107,6 +110,7 @@ v4_true = v_true + normrnd(0, std_voltage * noise, size(v_true));
 t4 = data.t;
 csp0_4_true = data.cs_ave_p(1);
 
+%%% data setup (5th profile)
 data = readtable("data/SPM_FDM_nr"+Nr_data+"_simulation_"+profiles(5)+"_cell"+cell_target+".csv");
 data.Properties.VariableNames = {'t', 'I', 'V_spm', 'css_n', ...
     'cs_ave_n', 'css_p', 'cs_ave_p'};
