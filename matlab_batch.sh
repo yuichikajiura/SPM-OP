@@ -28,7 +28,7 @@
 #SBATCH --output=results/spm_op_%j_stdout.txt
 #SBATCH --error=results/spm_op_%j_stderr.txt
 #SBATCH --time=48:00:00
-#SBATCH --job-name=spm_op
+#SBATCH --job-name=spm_op_multi
 #SBATCH --mail-user=yuichi@ou.edu
 #SBATCH --mail-type=ALL
 #SBATCH --chdir=/home/yuichi/SPM-OP
@@ -36,5 +36,5 @@
 #################################################
 
 module load MATLAB/2022a
-matlab -nodisplay -r paramID_wrapper
+matlab -nodisplay -r optimize_spm_multi_profiles
 
