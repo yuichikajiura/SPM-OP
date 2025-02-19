@@ -7,6 +7,7 @@ function [x_est] = optimize_spm(cell_target, cell_known, bound, ...
     %%% setting parameters
     if cell_known == 1
         run params_setting % load params
+
     else
         run params_setting_2
     end
