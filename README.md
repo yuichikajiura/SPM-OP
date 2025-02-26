@@ -9,7 +9,7 @@ SPM is discretized by finite difference method is used as the battery model. For
 ### Features
 - Six model parameters (e.g. diffusion coefficient at the anode) can be set to be identified 
 - Two cell models (fresh and aged) included, of which parameters based on [this](https://github.com/scott-moura/SPMeT/blob/master/param/params_LCO.m)
-- Five cycling datasets are prepared by simulating SPM as coded [here](https://github.com/scott-moura/SPMeT/blob/master/spme.m) (with electrolyte dynamics disabled and some modifications)
+- Several cycling datasets are prepared by simulating SPM as coded [here](https://github.com/scott-moura/SPMeT/blob/master/spme.m) (with electrolyte dynamics disabled and some modifications)
 
 ### Usage
 To identify parameter from any one of current profile, run:
