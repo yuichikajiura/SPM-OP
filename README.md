@@ -4,7 +4,7 @@
 
 ### Method
 This is a set of code to identify parameters of SPM from battery cycling datasets using metaheuristic algorithm (Genetic Algorithm or Particle Swarm Optimization).
-SPM is discretized by finite difference method is used as the battery model. For details, refer to [this paper](https://ecal.studentorg.berkeley.edu/pubs/SPMe-Obs-Journal-Final.pdf) from Professor Scott Moura at UC Berkeley, as well as [this repository](https://github.com/scott-moura/SPMeT). (Note: the electrolyte dynamics is neglected/disabled for the moment)
+SPM discretized by finite difference method is used as the battery model. For details, refer to [this paper](https://ecal.studentorg.berkeley.edu/pubs/SPMe-Obs-Journal-Final.pdf) from Professor Scott Moura at UC Berkeley, as well as [this repository](https://github.com/scott-moura/SPMeT). (Note: the electrolyte dynamics is neglected/disabled for the moment)
 
 ### Features
 - Six model parameters (e.g. diffusion coefficient at the anode) can be set to be identified 
